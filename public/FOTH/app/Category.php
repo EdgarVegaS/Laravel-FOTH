@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
   protected $primaryKey = 'id';
+
+  public function movie() {
+    return $this->hasMany('App\Movie');
+  }
 }
+
