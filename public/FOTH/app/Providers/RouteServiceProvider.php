@@ -69,33 +69,6 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web.php'));
     }
 
-    protected function mapMovieRoutes()
-    {
-      Route::prefix('movie')
-        ->middleware('web')
-        ->group(base_path('routes/movie.php'));
-    }
-
-    protected function mapCategoryRoutes()
-    {
-      Route::prefix('category')
-        ->middleware('web')
-        ->group(base_path('routes/category.php'));
-    }
-
-    protected function mapUserRoutes()
-    {
-      Route::prefix('user')
-        ->middleware('web')
-        ->group(base_path('routes/user.php'));
-    }
-
-    protected function mapFavoriteRoutes()
-    {
-      Route::prefix('favorite')
-        ->middleware('web')
-        ->group(base_path('routes/favorite.php'));
-    }
     /**
      * Define the "api" routes for the application.
      *
@@ -109,5 +82,40 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapMovieRoutes()
+    {
+      Route::prefix('movie')
+        ->middleware('api')
+        ->group(base_path('routes/movie.php'));
+    }
+
+    protected function mapCategoryRoutes()
+    {
+      Route::prefix('category')
+        ->middleware('api')
+        ->group(base_path('routes/category.php'));
+    }
+
+    protected function mapUserRoutes()
+    {
+      Route::prefix('user')
+        ->middleware('api')
+        ->group(base_path('routes/user.php'));
+    }
+
+    protected function mapFavoriteRoutes()
+    {
+      Route::prefix('favorite')
+        ->middleware('api')
+        ->group(base_path('routes/favorite.php'));
+    }
+
+    protected function mapRoleRoutes()
+    {
+      Route::prefix('role')
+        ->middleware('api')
+        ->group(base_path('routes/role.php'));
     }
 }
