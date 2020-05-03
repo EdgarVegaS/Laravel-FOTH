@@ -17,7 +17,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('NOW()'));
+            $table->timestamp('updated_at')->default(\DB::raw('NOW()'));
             $table->softDeletes();
         });
     }

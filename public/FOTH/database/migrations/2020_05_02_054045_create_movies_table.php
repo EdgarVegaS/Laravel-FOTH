@@ -21,7 +21,8 @@ class CreateMoviesTable extends Migration
             $table->string('url');
             $table->integer('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('NOW()'));
+            $table->timestamp('updated_at')->default(\DB::raw('NOW()'));
             $table->softDeletes();
         });
     }
