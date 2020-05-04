@@ -11,7 +11,10 @@ Route::get('/{id}', function ($categoryId) {
   return response(Category::find($categoryId), 200);
 });
 
-Route::post('/', 'CategoryController@create');
+Route::post('/', function(Request $req) {
+  $res = Category::create($req->all());
+  return $res;
+});
 
 Route::put('/{id}', function(Request $req, $categoryId) {
   $category = Category::findOrFail($categoryId);
