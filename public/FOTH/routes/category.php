@@ -11,10 +11,7 @@ Route::get('/{id}', function ($categoryId) {
   return response(Category::find($categoryId), 200);
 });
 
-Route::post('/', function(Request $req) {
-  $res = Category::create($req->all());
-  return $res;
-});
+Route::post('/', 'CategoryController@create');
 
 Route::put('/{id}', function(Request $req, $categoryId) {
   $category = Category::findOrFail($categoryId);
@@ -26,4 +23,3 @@ Route::delete('/{id}',function($categoryId) {
   Category::find($categoryId)->delete();
   return 204;
 });
-

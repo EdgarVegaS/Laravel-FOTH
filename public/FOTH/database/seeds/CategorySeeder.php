@@ -15,6 +15,7 @@ class CategorySeeder extends Seeder
     DB::table('categories')->truncate();
     DB::table('categories')->insert([
       'name' => 'Category Test',
+      'description' => 'Category Description',
     ]);
   }
 }
