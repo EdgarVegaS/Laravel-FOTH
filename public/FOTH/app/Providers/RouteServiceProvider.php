@@ -94,7 +94,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapCategoryRoutes()
     {
       Route::prefix('category')
-        ->middleware('web')
+        ->middleware('api')
+        ->namespace($this->namespace)
         ->group(base_path('routes/category.php'));
     }
 
