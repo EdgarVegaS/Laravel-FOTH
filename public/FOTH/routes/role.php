@@ -1,29 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Movie;
+use App\Role;
 
-Route::get('/', function() {
-  return response(Role::all(), 200);
-});
+Route::get('/', 'RoleController@index');
 
-Route::get('/{id}', function ($roleId) {
-  return response(Role::find($roleId), 200);
-});
+Route::get('/{roleId}', 'RoleController@show');
 
-Route::post('/', function(Request $req) {
-  $res = Role::create($req->all());
-  return $res;
-});
+Route::post('/', 'RoleController@create');
 
-Route::put('/{id}', function(Request $req, $roleId) {
-  $role = Role::findOrFail($roleId);
-  $role->update($req->all());
-  return $role;
-});
+Route::put('/{roleId}', 'RoleController@update');
 
-Route::delete('/{id}',function($movieId) {
-  Movie::find($movieId)->delete();
-  return 204;
-});
+Route::delete('/{roleId}','RoleController@destroy');
 

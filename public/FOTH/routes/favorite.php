@@ -3,27 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Favorite;
 
-Route::get('/', function() {
-  return response(Favorite::all(), 200);
-});
+Route::get('/', 'FavoriteController@index');
 
-Route::get('/{id}', function ($favId) {
-  return response(Favorite::find($favId), 200);
-});
+Route::get('/{favId}', 'FavoriteController@show');
 
-Route::post('/', function(Request $req) {
-  $res = Favorite::create($req->all());
-  return $res;
-});
+Route::post('/', 'FavoriteController@create');
 
-Route::put('/{id}', function(Request $req, $favId) {
-  $fav = Favorite::findOrFail($favId);
-  $fav->update($req->all());
-  return $fav;
-});
+Route::put('/{favId}', 'FavoriteController@update');
 
-Route::delete('/{id}',function($favId) {
-  Favorite::find($favId)->delete();
-  return 204;
-});
+Route::delete('/{favId}', 'FavoriteController@destroy');
 

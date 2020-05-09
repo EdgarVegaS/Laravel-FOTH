@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favorite extends Model
 {
+  protected $table = 'favorites';
   protected $primaryKey = 'id';
-  protected $fillable = ['name']
+  protected $fillable = [
+    'name', 'movie_id', 'user_id'
+  ];
 
   public function user() {
     return $this->belongsTo('App\User');

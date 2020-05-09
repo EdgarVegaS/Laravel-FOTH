@@ -51,6 +51,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapCategoryRoutes();
 
         $this->mapUserRoutes();
+        
+        $this->mapRoleRoutes();
 
         $this->mapFavoriteRoutes();
     }
@@ -87,7 +89,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapMovieRoutes()
     {
       Route::prefix('movie')
-        ->middleware('web')
+        ->middleware('api')
+        ->namespace($this->namespace)
         ->group(base_path('routes/movie.php'));
     }
 
@@ -102,21 +105,24 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapUserRoutes()
     {
       Route::prefix('user')
-        ->middleware('web')
+        ->middleware('api')
+        ->namespace($this->namespace)
         ->group(base_path('routes/user.php'));
     }
 
     protected function mapFavoriteRoutes()
     {
       Route::prefix('favorite')
-        ->middleware('web')
+        ->middleware('api')
+        ->namespace($this->namespace)
         ->group(base_path('routes/favorite.php'));
     }
 
     protected function mapRoleRoutes()
     {
       Route::prefix('role')
-        ->middleware('web')
+        ->middleware('api')
+        ->namespace($this->namespace)
         ->group(base_path('routes/role.php'));
     }
 }

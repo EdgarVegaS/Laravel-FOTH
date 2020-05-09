@@ -3,27 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\User;
 
-Route::get('/', function() {
-  return response(User::all(), 200);
-});
+Route::get('/', 'UserController@index');
 
-Route::get('/{id}', function ($userId) {
-  return response(User::find($userId), 200);
-});
+Route::get('/{userId}', 'UserController@show');
 
-Route::post('/', function(Request $req) {
-  $res = User::create($req->all());
-  return $res;
-});
+Route::post('/', 'UserController@create');
 
-Route::put('/{id}', function(Request $req, $userId) {
-  $user = User::findOrFail($userId);
-  $user->update($req->all());
-  return $user;
-});
+Route::put('/{userId}', 'UserController@update');
 
-Route::delete('/{id}',function($userId) {
-  User::find($userId)->delete();
-  return 204;
-});
+Route::delete('/{userId}', 'UserController@destroy');
 

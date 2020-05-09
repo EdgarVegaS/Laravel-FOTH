@@ -3,27 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Movie;
 
-Route::get('/', function() {
-  return response(Movie::all(), 200);
-});
+Route::get('/', 'MovieController@index');
 
-Route::get('/{id}', function ($movieId) {
-  return response(Movie::find($movieId), 200);
-});
+Route::get('/{movieId}', 'MovieController@show');
 
-Route::post('/', function(Request $req) {
-  $res = Movie::create($req->all());
-  return $res;
-});
+Route::post('/', 'MovieController@create');
 
-Route::put('/{id}', function(Request $req, $movieId) {
-  $movie = Movie::findOrFail($movieId);
-  $movie->update($req->all());
-  return $movie;
-});
+Route::put('/{movieId}', 'MovieController@update');
 
-Route::delete('/{id}',function($movieId) {
-  Movie::find($movieId)->delete();
-  return 204;
-});
+Route::delete('/{movieId}', 'MovieController@destroy');
 
