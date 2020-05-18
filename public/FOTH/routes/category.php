@@ -5,10 +5,10 @@ use App\Category;
 
 Route::get('/', 'CategoryController@index');
 
-Route::get('/{categoryId}', 'CategoryController@show');
+Route::get('/{categoryId}', 'CategoryController@show')->where('categoryId', '[0-9]+');
 
 Route::post('/', 'CategoryController@create');
 
-Route::put('/{categoryId}', 'CategoryController@update');
+Route::put('/{categoryId}', 'CategoryController@update')->where('categoryId', '[0-9]+');
 
-Route::delete('/{categoryId}', 'CategoryController@destroy');
+Route::delete('/{categoryId}', 'CategoryController@destroy')->where('categoryId', '[0-9]+');
