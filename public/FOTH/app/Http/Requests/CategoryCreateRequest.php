@@ -28,4 +28,12 @@ class CategoryCreateRequest extends FormRequest
 			'description' => 'required'
 		];
 	}
+
+	public function messages()
+	{
+		return [
+			'name.required' => 'Nombre requerido',
+			'description.required' => 'Descripcion requerida'
+		];
+	}
 }

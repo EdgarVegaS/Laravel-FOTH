@@ -24,12 +24,9 @@ class CategoryController extends Controller
 
 	public function create(CategoryCreateRequest $req) {
 		try {
-			$this->validate($req, [
-				'name' => 'required',
-				'description' => 'required'
-			]);
+			$validateData = $req->validated();
+			$category = Category::create($validateData);
 
-			$category = Category::create($req->all());
 			return response()->json($category, 201);
 		} catch (Exception $e) {
 			Log::error($e->getMessage());
