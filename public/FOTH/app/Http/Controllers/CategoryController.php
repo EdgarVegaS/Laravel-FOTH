@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 
 class CategoryController extends Controller
 {
@@ -34,9 +35,13 @@ class CategoryController extends Controller
 		}
 	}
 
-	public function update(Request $req, Category $categoryId) {
-		$categoryId->update($req->all());
-		return response()->json($categoryId, 200);
+	public function update(CategoryUpdateRequest $req, Category $categoryId) {
+		try{
+			$categoryId->update($req->all());
+			return response()->json($categoryId, 200);
+		} catch(Exception $e) {
+			echo 'Error update category';
+		}
 	}
 
 	public function destroy(Category $categoryId) {
