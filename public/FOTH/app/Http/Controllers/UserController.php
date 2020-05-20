@@ -15,6 +15,13 @@ class UserController extends Controller
     return $userId;
   }
 
+  public function findUser($email) {
+
+    $user = User::where('email',$email);
+    return $user;
+    
+  }
+
   public function create(Request $req) {
     $user = User::create($req->all());
     return response()->json($user, 201);
