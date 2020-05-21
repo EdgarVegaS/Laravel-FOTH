@@ -13,11 +13,11 @@ class Movie extends Model
   ];
 
   public function category() {
-    return $this->hasMany('App\Category');
+    return $this->hasMany('App\Category'::class);
   }
 
   public function favorite() {
-    return $this->hasMany('App\Favorite');
+    return $this->hasMany('App\Favorite'::class);
   }
 }
 

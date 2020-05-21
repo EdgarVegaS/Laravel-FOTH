@@ -39,11 +39,11 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     public function role() {
-      return $this->belongsTo('App\Role');
+      return $this->belongsTo('App\Role'::class);
     }
 
     public function favorite() {
-      return $this->hasMany('App\Favorite');
+      return $this->hasMany('App\Favorite'::class);
     }
 
     public function getJWTIdentifier()

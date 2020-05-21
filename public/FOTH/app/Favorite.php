@@ -13,11 +13,11 @@ class Favorite extends Model
   ];
 
   public function user() {
-    return $this->belongsTo('App\User');
+    return $this->belongsTo('App\User'::class);
   }
 
   public function movie() {
-    return $this->hasMany('App\Movie');
+    return $this->hasMany('App\Movie'::class);
   }
 }
 
