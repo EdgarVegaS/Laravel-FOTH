@@ -24,10 +24,10 @@ class MovieUpdateRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'name' => 'required',
-			'description' => 'required',
-			'url' => 'required',
-			'category_id' => 'required'
+			'name' => 'alpha_num',
+			'description' => 'alpha_num',
+			'url' => 'alpha_num',
+			'category_id' => 'integer'
 		];
 	}
 }

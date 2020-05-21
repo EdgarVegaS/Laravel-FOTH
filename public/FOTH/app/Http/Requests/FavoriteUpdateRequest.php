@@ -24,9 +24,9 @@ class FavoriteUpdateRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'name' => 'required',
-			'movie_id' => 'required',
-			'user_id' => 'required'
+			'name' => 'string',
+			'movie_id' => 'integer',
+			'user_id' => 'integer'
 		];
 	}
 

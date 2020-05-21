@@ -24,11 +24,11 @@ class UserUpdateRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'first_name' => 'required|string',
-			'last_name' => 'required|string',
-			'email' => 'required|email',
-			'password' => 'required',
-			'role_id' => 'required'
+			'first_name' => 'string',
+			'last_name' => 'string',
+			'email' => 'email',
+			'password' => 'string',
+			'role_id' => 'integer'
 		];
 	}
 }
