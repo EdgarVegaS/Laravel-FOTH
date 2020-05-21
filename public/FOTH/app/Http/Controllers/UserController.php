@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -11,26 +13,43 @@ class UserController extends Controller
     return User::all();
   }
 
-  public function show(User $userId) {
-    return $userId;
-  }
+		public function show(User $userId) {
+			try {
+				return $userId;
+			} catch (Exception $e) {
+				echo 'Error get user id', $e->getMessage(), '\n';
+			}
+		}
 
-  public function findUser($email) {
+		public function findUser($email) {
+			try{
+				$user = User::where('email',$email);
+				return $user;
+			}catch(Exception $e){
+				echo 'Error to find email';
+			}
+		}
 
-    $user = User::where('email',$email);
-    return $user;
-    
-  }
+		public function create(UserCreateRequest $req) {
+			try {
+				$validateData = $req->validated();
+				$user = User::create($validateData);
 
-  public function create(Request $req) {
-    $user = User::create($req->all());
-    return response()->json($user, 201);
-  }
+				return response()->json($user, 201);
+			} catch (Exception $e) {
+				echo 'Error create user', $e->getMessage(), '\n';
+			}
+		}
 
-  public function update(Request $req, User $userId) {
-    $userId->update($req->all());
-    return response()->json($userId, 200);
-  }
+		public function update(UserUpdateRequest $req, User $userId) {
+			try{
+				$validatedData = $req->validated();
+				$userId->update($validatedData);
+				return response()->json($userId, 200);
+			} catch(Exception $e) {
+				echo 'Error update user';
+			}
+		}
 
   public function destroy(User $userId) {
     $userId->delete();

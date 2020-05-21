@@ -18,7 +18,6 @@ class CategoryController extends Controller
 		try {
 			return $categoryId;
 		} catch (Exception $e) {
-			Log::error($e->getMessage());
 			echo 'Error get category id', $e->getMessage(), '\n';
 		}
 	}
@@ -30,14 +29,14 @@ class CategoryController extends Controller
 
 			return response()->json($category, 201);
 		} catch (Exception $e) {
-			Log::error($e->getMessage());
 			echo 'Error create category', $e->getMessage(), '\n';
 		}
 	}
 
 	public function update(CategoryUpdateRequest $req, Category $categoryId) {
 		try{
-			$categoryId->update($req->all());
+			$validatedData = $req->validated();
+			$categoryId->update($validatedData);
 			return response()->json($categoryId, 200);
 		} catch(Exception $e) {
 			echo 'Error update category';
@@ -45,7 +44,11 @@ class CategoryController extends Controller
 	}
 
 	public function destroy(Category $categoryId) {
+		try{
 		$categoryId->delete();
 		return response()->json(null, 204);
+		}catch(Exception $e){
+			echo 'failed to delete category', $e;
+		}
 	}
 }

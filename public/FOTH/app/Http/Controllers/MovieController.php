@@ -36,7 +36,8 @@ class MovieController extends Controller
 
 	public function update(MovieUpdateRequest $req, Movie $movieId) {
 		try{
-			$movieId->update($req->all());
+      $validatedData = $req->validated();
+			$movieId->update($validatedData);
 			return response()->json($movieId, 200);
 		} catch(Exception $e) {
 			echo 'Error update movie';

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryCreateRequest extends FormRequest
+class FavoriteUpdateRequest extends FormRequest
 {
 	/**
 		* Determine if the user is authorized to make this request.
@@ -24,8 +24,9 @@ class CategoryCreateRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'name' => 'required|string|unique:categories',
-			'description' => 'required'
+			'name' => 'required',
+			'movie_id' => 'required',
+			'user_id' => 'required'
 		];
 	}
 
