@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Movie;
 use App\Http\Requests\MovieCreateRequest;
 use App\Http\Requests\MovieUpdateRequest;
+use Illuminate\Support\Facades\Log;
 
 class MovieController extends Controller
 {
@@ -13,14 +14,14 @@ class MovieController extends Controller
 		return Movie::all();
 	}
 
-	public function show(Movie $movieId) {
-		try {
-		return $movieId;
-		} catch (Exception $e) {
-			Log::error($e->getMessage());
-			echo 'Error get movie id', $e->getMessage(), '\n';
-		}
-	}
+  public function show(Movie $movieId) {
+    try {
+      return $movieId;
+    } catch (Exception $e) {
+      Log::error($e->getMessage());
+      echo 'Error get movie id', $e->getMessage(), '\n';
+    }
+  }
 
 	public function create(MovieCreateRequest $req) {
 		try {
@@ -49,3 +50,4 @@ class MovieController extends Controller
 		return response()->json(null, 204);
 	}
 }
+

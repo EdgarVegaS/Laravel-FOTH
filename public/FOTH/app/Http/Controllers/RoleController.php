@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\Http\Requests\RoleCreateRequest;
 use App\Http\Requests\RoleUpdateRequest;
+use Illuminate\Support\Facades\Log;
 
 class RoleController extends Controller
 {
